@@ -3,6 +3,7 @@ import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
+import RoomDetails from "../components/rooms/RoomDetails";
 
 export const Router = createBrowserRouter([
     {
@@ -12,6 +13,11 @@ export const Router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home />
+            },
+            {
+                path: "/rooms/:id",
+                element: <RoomDetails />,
+                loader: ({params}) => fetch(`http://localhost:3000/rooms/${params.id}`)
             }
         ]
     },
